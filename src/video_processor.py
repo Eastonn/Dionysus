@@ -40,6 +40,6 @@ class VideoProcessor:
             # If the mode is merge, output is a video file with "_merged" appended to the base file name.
             output_file_path = os.path.join(base_path, f"{file_base_name}_merged{file_extension}")
             audioclip = AudioFileClip(audio_path)
-            if duration:
-                audioclip = audioclip.subclip(0, duration)
+            if start or duration:
+                audioclip = audioclip.subclip(start, duration)
             clip.set_audio(audioclip).write_videofile(output_file_path)
